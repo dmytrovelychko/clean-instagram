@@ -1,7 +1,24 @@
+// Raw intial version of cleaning logic
+window.addEventListener('scroll', function() {
+  
+makeInvisible = false;
+  
+document.querySelectorAll('article') [0].parentElement.childNodes.forEach(el => {
+    if (makeInvisible) {
+        // console.log(el)
+        el.style.visibility = 'hidden'   
+    }
 
-document.querySelectorAll('article') [0].parentElement.childNodes
+    // console.log(el)
+    
+    if (el.nodeName === 'DIV') {
+        const globalRegex = new RegExp('Suggested Posts', 'g')
 
-// find all articles tags
-// find div between articles that contain text: Suggested Posts, this is an indicator of dirt
-// make not visible all articles after this div tag
+        if (globalRegex.test(el.textContent)) {
+            // console.log(el.textContent)
+            makeInvisible = true
+        }
+    }
 
+})
+});
